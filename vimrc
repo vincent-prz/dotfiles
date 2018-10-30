@@ -100,9 +100,6 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 let python_highlight_all=1
 syntax on
 
-" dart coloring
-:autocmd BufNewFile,BufRead *.dart set syntax=java
-
 colorscheme summerfruit256
 set termguicolors
 set cursorline
