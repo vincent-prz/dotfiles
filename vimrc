@@ -117,12 +117,15 @@ map <C-p> :FZF<CR>
 "Powerline setup
 " Always show statusline
 set laststatus=2
+
+" airline fonts. Note: need to install powerline fonts for airline / powerline to work
+" https://github.com/powerline/fonts
+let g:airline_powerline_fonts = 1
+
 "
 " " Use 256 colours (Use this setting only if your terminal supports 256
 " colours)
 set t_Co=256
-
-set guifont=Ubuntu\ Mono\ derivative\ Powerline
 
 " allow pasting outside of vim
 set clipboard=unnamed
