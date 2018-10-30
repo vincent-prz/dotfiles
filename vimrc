@@ -52,7 +52,6 @@ Plugin 'junegunn/fzf'
 Plugin 'vim-airline/vim-airline'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'rking/ag.vim' 
 Plugin 'heavenshell/vim-pydocstring'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'w0rp/ale'
@@ -128,9 +127,6 @@ set guifont=Ubuntu\ Mono\ derivative\ Powerline
 " allow pasting outside of vim
 set clipboard=unnamed
 
-" ag settings
-let g:ag_prg="/usr/local/bin/ag --column --ignore-dir=fixtures/"
-
 "jedi-vim: python completion and more
 "Completion <C-Space>
 "Goto assignments <leader>g (typical goto function)
@@ -149,10 +145,3 @@ let g:jedi#use_splits_not_buffers = "left"
 let g:ale_linters = {
 \   'javascript': ['eslint', 'flow'],
 \}
-
-" Use ag in CtrlP for listing files.
-" Lightning fast and respects .gitignore (caveat: ignores ctrlp_custom_ignore)
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
