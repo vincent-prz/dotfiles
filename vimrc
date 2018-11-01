@@ -25,6 +25,15 @@ noremap <Right> <NOP>
 nnoremap H gT
 nnoremap L gt
 "
+
+" fzf key binding
+map <C-p> :FZF<CR>
+"
+
+" nerdtree
+map <C-n> :NERDTreeToggle<CR>
+"
+
 """"" END KEY BINDINGS """""
 
 " set the runtime path to include Vundle and initialize
@@ -106,10 +115,7 @@ set cursorline
 set colorcolumn=80
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-map <C-n> :NERDTreeToggle<CR>
 
-" fzf key binding
-map <C-p> :FZF<CR>
 
 "Powerline setup
 " Always show statusline
