@@ -15,7 +15,9 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-"
+
+" Disable ex mode
+noremap Q <NOP>
 
 " disable j and k for more efficient vertical moves
 " noremap j <NOP>
@@ -72,6 +74,7 @@ Plugin 'reasonml-editor/vim-reason'
 Plugin 'elmcast/elm-vim'
 Plugin 'jremmen/vim-ripgrep' 
 Plugin 'airblade/vim-gitgutter'
+Plugin 'ambv/black' "python formatter
 
 " snipmate and dependencies
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -132,6 +135,9 @@ set t_Co=256
 
 " allow pasting outside of vim
 set clipboard=unnamed
+
+" black setup
+let g:black_linelength = 80
 
 "jedi-vim: python completion and more
 "Completion <C-Space>
