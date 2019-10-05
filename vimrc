@@ -3,7 +3,6 @@
 set nocompatible | filetype indent plugin on | syn on
 set fileencodings=utf-8
 set encoding=utf-8
-set nu
 set noswapfile
 set diffopt+=vertical
 
@@ -19,14 +18,20 @@ noremap <Right> <NOP>
 " Disable ex mode
 noremap Q <NOP>
 
-" disable j and k for more efficient vertical moves
-" noremap j <NOP>
-" noremap k <NOP>
-"
+" disable h, l for more efficient vertical moves
+" noremap h <NOP>
+" noremap h <NOP>
+" noremap l <NOP>
+" noremap l <NOP>
+
 " navigate between tabs
 nnoremap H gT
 nnoremap L gt
 "
+
+"To create a new tab
+nnoremap <C-t> :tabnew<Enter>
+inoremap <C-t> <Esc>:tabnew<Enter>
 
 " fzf key binding
 map <C-p> :FZF<CR>
@@ -35,6 +40,25 @@ map <C-p> :FZF<CR>
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
 "
+
+" Easier split navigation
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Change pydocstring shortcut, to prevent collision with split nav (default
+" was <C-l> (FIXME doesn't work)
+nmap <silent> <C-Semicolon> <Plug>(pydocstring)
+
+" Remap CapsLock on Esc
+
+" nnoremap <CapsLock> <Esc>
+
+"ghcmod
+" nnoremap <Leader>ht :GhcModType<cr>
+" nnoremap <Leader>htc :GhcModTypeClear<cr>
 
 """"" END KEY BINDINGS """""
 
@@ -54,12 +78,9 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'jonathanfilip/vim-lucius'
 Plugin 'vim-scripts/summerfruit256.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/fzf'
-" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-" Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-fugitive'
@@ -75,6 +96,13 @@ Plugin 'elmcast/elm-vim'
 Plugin 'jremmen/vim-ripgrep' 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ambv/black' "python formatter
+Plugin 'alx741/vim-hindent' "haskell formatter
+
+" Haskell stuff
+" Plugin 'eagletmt/ghcmod-vim'
+
+" vimproc
+Plugin 'Shougo/vimproc'
 
 " snipmate and dependencies
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -93,12 +121,12 @@ au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    \ set textwidth=79 |
+    \ set textwidth=88 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
 
-au BufNewFile,BufRead *.js,*.html,*.css:
+au BufNewFile,BufRead *.js,*.html,*.css,*.java:
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
@@ -115,7 +143,7 @@ syntax on
 colorscheme summerfruit256
 set termguicolors
 set cursorline
-set colorcolumn=80
+set colorcolumn=88
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
@@ -133,11 +161,11 @@ let g:airline_powerline_fonts = 1
 " colours)
 set t_Co=256
 
-" allow pasting outside of vim
-set clipboard=unnamed
+" allow pasting outside of vim (including tmux!)
+set clipboard=unnamedplus
 
 " black setup
-let g:black_linelength = 80
+let g:black_linelength = 88
 
 "jedi-vim: python completion and more
 "Completion <C-Space>
@@ -157,3 +185,6 @@ let g:jedi#use_splits_not_buffers = "left"
 let g:ale_linters = {
 \   'javascript': ['eslint', 'flow'],
 \}
+
+" display ale errors in airline
+let g:airline#extensions#ale#enabled = 1
